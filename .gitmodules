@@ -1,0 +1,3 @@
+[submodule "decktape"]
+	path = decktape
+	url = https://github.com/astefanutti/decktape
