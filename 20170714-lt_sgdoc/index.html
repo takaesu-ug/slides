@@ -1,0 +1,242 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Talkie.js - HTML/CSS/JavaScript Presentation Library</title>
+  <link rel="stylesheet" href="/talkie/talkie.min.css">
+  <link rel="stylesheet" href="/talkie/talkie-default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/monokai_sublime.min.css">
+  <style>
+    #control {
+      color: rgb(165, 160, 118);
+    }
+    #prev {
+      border-right-color: rgb(165, 160, 118);
+    }
+    #next {
+      border-left-color: rgb(165, 160, 118);
+    }
+  </style>
+</head>
+<body>
+<!--
+利用できるmarkdownのlayout
+<template layout="cover" type="text/x-markdown">
+<template layout="title" type="text/x-markdown">
+<template layout="index" type="text/x-markdown">
+<template layout="bullets" type="text/x-markdown">
+<template layout="code" type="text/x-markdown">
+<template layout="title" invert type="text/x-markdown"
+          backface="https://farm8.staticflickr.com/7469/16209884502_211d01ac0d_z_d.jpg"
+          backface-filter="blur(3px) brightness(.9)">
+-->
+
+<!-- put your slides -->
+
+<template layout="cover" type="text/x-markdown">
+# AWSドキュメント化のススメ
+
+### ~ それなりにいい感じのドキュメント ~
+
+高江洲 祐治(たかえす ゆうじ)
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+# たかえす ゆうじ
+- サーバーワークス大阪 技術4課
+- 趣味は、お酒とマラソン
+- 好きな言語
+  - Ruby
+  - Python, Golang あたりは勉強中)
+- 好きなAWSサービス
+  - S3 (Lambda等のServerlessやりたい気持ち)
+</template>
+
+<template layout="title" type="text/x-markdown">
+# 早速ですが
+</template>
+
+<template layout="title" invert type="text/x-markdown"
+          backface="/20170714-lt_sgdoc/sgdoc.png"
+          backface-filter="blur(2px) brightness(.3)">
+# こんなのを作りました
+## [sgdoc](https://github.com/yusabana/sgdoc)
+`https://github.com/yusabana/sgdoc`
+
+セキュリティグループの設定をマークダウンとして出力するドキュメント自動化ツール
+
+※現状はプロトタイプレベルのサンプル実装
+</template>
+
+<template layout="bullets" invert type="text/x-markdown">
+## 実行方法
+shared credentialsや環境変数でアクセストークン・シークレットを設定しておく
+- $ gem install sgdoc
+- $ sgdoc > security_groups.md
+</template>
+
+<template layout="code" invert type="text/x-markdown">
+## security_groups.md
+
+```
+### Inbound
+
+| Protocol | Port | Secure | %Description |
+| ---- | ---- | ---- | ---- |
+| tcp | 3306 | 10.10.0.0/16 | |
+| tcp | 3306 | 10.20.0.0/16 | |
+
+### Outbound
+
+| Protocol | Port | Secure | %Description |
+| ---- | ---- | ---- | ---- |
+| all | all | 0.0.0.0/16 | |
+```
+</template>
+
+<template layout="title" invert type="text/x-markdown">
+### マークダウンツールで表示(Backlog)
+構成管理ツールYambdaで出力したドキュメントっぽい
+![sg_sample.png](/20170714-lt_sgdoc/sg_sample.png)
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## なぜ作ったか(本日はなすこと)
+
+- 構成管理ツールのYambdaとは
+- 運用フェーズの現状と課題
+- マネジメントコンソールつらい問題
+- AWSドキュメント化ツールの展望
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## 構成管理ツールのYambdaとは
+
+- どんなもの
+  - 設計・構築支援するサーバーワークス社内ツール
+  - AWS環境の標準化と構築のスピードアップ
+- 自動生成
+  - 設定パラメータの **ドキュメント(マークダウン)** を自動生成
+  - 構築自動化のための **CloudFormationテンプレート** を自動生成
+</template>
+
+<template layout="cover" type="text/x-markdown">
+## Yambdaは<br>おもに **初期構築** に特化した<br>標準化/自動化の構成管理
+初期構築は品質を維持して大幅に効率化できている
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## 運用フェーズの現状と課題
+
+- 運用開始後に追加構築などでYambdaが余り活用ができていない
+- マネジメントコンソールで設定変更することが結構ある
+  - セキュリティグループ1つ追加する...
+  - インスタンスタイプの変更...
+- 設定パラメータのドキュメント(マークダウン)を手で加筆修正している
+  - 引き継ぎ案件だとそもそもドキュメント修正忘れてしまったり...
+</template>
+
+<template layout="title" invert type="text/x-markdown"
+          backface="/20170714-lt_sgdoc/sg_sample.png"
+          backface-filter="blur(1px) brightness(.3)">
+<blockquote style='font-size: 38px'>
+設定パラメータの<br>ドキュメント(マークダウン)を<br>手で加筆修正している
+</blockquote>
+
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## 設定パラメータのドキュメント
+
+- お客さんと認識合わせのために必要最低限のAWS設定値情報
+- 運用する上で変更がありそうな設定情報
+- 細かい設定値すべては網羅しなくてもよいので、確認しやすいよう一覧性のある表示
+</template>
+
+<template layout="title" invert type="text/x-markdown"
+          backface="/20170714-lt_sgdoc/sg_sample.png"
+          backface-filter="">
+- `それなりの情報をいい感じに`
+- `ブラウザの文字列検索もできる`
+</template>
+
+<template layout="title" invert type="text/x-markdown">
+### "マネジメントコンソールでいいんじゃね??"
+そうなんだけど...
+</template>
+
+<template layout="title" type="text/x-markdown">
+## マネジメントコンソールつらい問題
+</template>
+
+<template layout="title" type="text/x-markdown">
+### EC2から関連しているセキュリティグループを確認
+
+![mngcon1.png](/20170714-lt_sgdoc/mngcon1.png)
+</template>
+
+<template layout="title" type="text/x-markdown">
+### セキュリティグループの詳細
+
+![mngcon2.png](/20170714-lt_sgdoc/mngcon2.png)
+</template>
+
+<template layout="title" type="text/x-markdown">
+### 最終的にこうなってしまう... 👼
+- 増えていくタブ... 結局わからなくなってしまう
+
+![mngcon3.png](/20170714-lt_sgdoc/mngcon3.png)
+</template>
+
+<template layout="title" type="text/x-markdown">
+## AWSドキュメント化ツールの展望
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## こんなこともできるかも
+
+![CI.png](/20170714-lt_sgdoc/CI.png)
+</template>
+
+<template layout="bullets" type="text/x-markdown">
+## 今後やっていきたいこと
+
+- SecurityGroupだけでなく色々なAWSサービスに対応
+  - 各種AWSの情報をそれなりにいい感じに一覧できる
+- sgdocは捨てるかも、、新たなツールと名前でOSSとしてやっていけたらと思う
+- CloudAutomatorやポータルとかに組み込めたりもするかも
+</template>
+
+<template layout="cover" type="text/x-markdown">
+## ありがとうございました。
+- 一緒にやっていく人募集中
+</template>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script src="/talkie/talkie.min.js"></script>
+<script>
+  var talkie = Talkie({
+    wide: false,
+    control: true,
+    pointer: true,
+    progress: true,
+    backface: true,
+    canvas: true,
+    notransition: false,
+    linkShouldBlank: true
+  });
+
+  talkie.key('s').subscribe(talkie.next$);
+  talkie.key('n').subscribe(talkie.next$);
+  talkie.key('a').subscribe(talkie.prev$);
+  talkie.key('p').subscribe(talkie.prev$);
+
+  document.addEventListener('DOMContentLoaded', function() {
+    talkie.changed.subscribe(function(current) {
+      console.clear();
+      // print presenter notes
+      console.info(talkie.notes[current.getAttribute('data-page')]);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "slides",
+  "version": "1.0.0",
+  "description": "My slides.",
+  "main": "index.js",
+  "scripts": {
+    "live-server": "live-server --port=8888",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusabana/slides.git"
+  },
+  "author": "Yuji Takaesu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yusabana/slides/issues"
+  },
+  "homepage": "https://github.com/yusabana/slides#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}
