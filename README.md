@@ -1,5 +1,9 @@
 # My place of slides
 
+## Slides
+
+- [AWSドキュメント自動化のススメ](https://yusabana.github.io/slides/docs/20170714-lt_sgdoc/)
+
 ## Building
 
 Use live-server.
