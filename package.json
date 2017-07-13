@@ -4,7 +4,8 @@
   "description": "My slides.",
   "main": "index.js",
   "scripts": {
-    "live-server": "live-server --port=8888",
+    "live-server": "live-server --port=8888 --watch=slides",
+    "decktape": "bin/phantomjs-osx decktape/decktape.js --screenshots --screenshots-size=1400x1050",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
