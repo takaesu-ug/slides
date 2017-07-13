@@ -1,10 +1,8 @@
-# Place of Slides
+# My place of slides
 
-- おもに [ahomu/talkie](https://github.com/ahomu/Talkie) を利用したスライドの置き場
+## Building
 
-## Build
-
-live-serverを起動してスライドを置いたディレクトリを
+Use live-server.
 
 ```
 $ yarn run live-server
@@ -12,7 +10,7 @@ $ yarn run live-server
 
 You can access `http://localhost:8888/SLIDE_DIRECTORY/`
 
-## generate pdf(using decktape)
+## Generate pdf(using decktape)
 
 I use decktape as a git-submodule.  
 you can use update git-submodule as a below.  
