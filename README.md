@@ -1,4 +1,4 @@
-# Slides置き場
+# Place of Slides
 
 - おもに [ahomu/talkie](https://github.com/ahomu/Talkie) を利用したスライドの置き場
 
